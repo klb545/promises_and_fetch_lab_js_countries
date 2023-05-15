@@ -5,8 +5,6 @@
 // GLOBAL VARIABLES
 let pElement = document.getElementById("countriesList").querySelector("p");
 const ulElement = document.getElementById("countriesList");
-const inputElement = document.getElementById("user-input");
-const buttonElement = document.getElementById("submit");
 
 // 1) Create a function which houses a fetch() request to the RESTCountries API and returns the
 //    response in JSON format.
@@ -37,7 +35,7 @@ const createListOfCountries = async () => {
     countries.forEach(country => {
         const liElement = document.createElement("li");
         ulElement.appendChild(liElement);
-        liElement.innerText = country.name.common + ".   Population: " + country.population + ".   Capital: " + country.capital;
+        liElement.innerText = country.name.common + " " + country.flag + "\n   Population: " + country.population + "\n   Capital: " + country.capital;
     })
 }
 
@@ -50,7 +48,8 @@ setUp();
 // 5) Create a function which takes your global variable and filters it based off of the value
 //    received from your <form> above. Replace the contents of your <ul> with the filtered
 //    countries returned.
-
+const inputElement = document.getElementById("user-input");
+const buttonElement = document.getElementById("submit");
 
 buttonElement.addEventListener("click", event => {
     const allLiElements = document.querySelectorAll("li");
@@ -64,7 +63,6 @@ buttonElement.addEventListener("click", event => {
 
     const delayInMilliSeconds = 1000;
     setTimeout(function() {
-        // code to be executed after 1 second
         // try {
             for(let i = 0; i < allLiElements.length; i++){
                 if(!allLiElements[i].innerText.toLowerCase().includes(stringInputFromUser)){
@@ -79,6 +77,8 @@ buttonElement.addEventListener("click", event => {
         // }    
     }, delayInMilliSeconds)
 })
+
+
 
 
 // // // // // // // // // // // // // // //
