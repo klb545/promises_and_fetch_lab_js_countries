@@ -37,6 +37,28 @@ const createListOfCountries = async () => {
 setUp();
 
 // 4) & 5)
+buttonElement.addEventListener("click", event => {
+    const temporaryMessage = document.createElement("h2");
+    inputElement.parentNode.appendChild(temporaryMessage);
+    temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
+
+    pElement.innerText = "Awaiting API...";
+
+    const allLiElements = document.querySelectorAll("li");
+
+    setTimeout(function() {
+        for(let i = 0; i < allLiElements.length; i++){
+            allLiElements[i].remove();
+        }
+        url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
+        setUp();
+        const listNew = ulElement.getElementsByTagName("li");
+        temporaryMessage.remove();
+        pElement.innerHTML = "<!--" + pElement.innerText + "-->";
+        // inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
+   }, 1000)
+})
+
 // buttonElement.addEventListener("click", event => {
     
 //     const allLiElements = document.querySelectorAll("li");
@@ -59,29 +81,6 @@ setUp();
 //             inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
 //     }, 1000)
 // })
-
-buttonElement.addEventListener("click", event => {
-    const temporaryMessage = document.createElement("h2");
-    inputElement.parentNode.appendChild(temporaryMessage);
-    temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
-
-    pElement.innerHTML = pElement.innerHTML.substring(4, 19);
-
-    const allLiElements = document.querySelectorAll("li");
-    setTimeout(function() {
-        for(let i = 0; i < allLiElements.length; i++){
-            allLiElements[i].remove();
-        }
-        url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
-        console.log(url);
-        setUp();
-        temporaryMessage.remove();
-        pElement.innerHTML = "<!--" + pElement.innerText + "-->";
-        // inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")}));
-    }, 1000)
-})
-
-
 
 
 // // // // // // // // // // // // // // // //
