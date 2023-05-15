@@ -17,10 +17,8 @@ const fetchCountries = async () => {
 
 // 2 & 8)
 const setUp = async () => {
-    
-    countries = await fetchCountries();
-
     try {
+        countries = await fetchCountries();
         createList(countries);
     }
     catch(error){
@@ -66,28 +64,3 @@ const filter = (parameter) => {
         // inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
    }, 1000)
 }
-
-
-
-// buttonElement.addEventListener("click", event => {
-    
-//     const allLiElements = document.querySelectorAll("li");
-//     const stringInputFromUser = inputElement.value.toLowerCase();
-
-//     const temporaryMessage = document.createElement("h2");
-//     inputElement.parentNode.appendChild(temporaryMessage);
-//     temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
-
-//     pElement.innerHTML = pElement.innerHTML.substring(4, 19);
-
-//     setTimeout(function() {
-//             for(let i = 0; i < allLiElements.length; i++){
-//                 if(!allLiElements[i].innerText.toLowerCase().substring(15).replace("capital:", "").includes(stringInputFromUser)){
-//                     allLiElements[i].remove();
-//                 }
-//             }
-//             temporaryMessage.remove();
-//             pElement.innerHTML = "<!--" + pElement.innerText + "-->";
-//             inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
-//     }, 1000)
-// })
