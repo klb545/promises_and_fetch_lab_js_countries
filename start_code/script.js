@@ -13,9 +13,6 @@ const buttonElement = document.getElementById("submit");
 const fetchCountry = async () => {
     const response = await fetch("https://restcountries.com/v3.1/all");
     const countryJsonData = await response.json();
-    if(countryJsonData != null){
-        pElement.innerHTML = "<!--" + pElement.innerText + "-->";
-    }
     return countryJsonData;
 }
 
@@ -36,11 +33,13 @@ const setUp = () => createListOfCountries();
 //    populating your list.
 const createListOfCountries = async () => {
     const countries = await fetchCountry();
+    pElement.innerHTML = "<!--" + pElement.innerText + "-->";
     countries.forEach(country => {
         const liElement = document.createElement("li");
         ulElement.appendChild(liElement);
         liElement.innerText = country.name.common + ".   Population: " + country.population + ".   Capital: " + country.capital;
     })
+    
 }
 
 setUp();
@@ -80,7 +79,6 @@ buttonElement.addEventListener("click", event => {
 })
 
 
-
 // // // // // // // // // // // // // // //
 // // // // //   EXTENSIONS   // // // // //
 // // // // // // // // // // // // // // //
@@ -90,12 +88,8 @@ buttonElement.addEventListener("click", event => {
 // 7) Add a dynamic heading which tells the user that the countries are being filtered.
 //    Add an artificial delay so that this header can be viewed as well as the original "Awaiting API.." <p> element
 
-
 // 8) Make your page display an error message should it meet an error on querying the API.
 //    Test this out by trying to access an endpoint which doesn't exist for the API.
-
-
-
 
 
 
@@ -113,44 +107,6 @@ buttonElement.addEventListener("click", event => {
 //     }
 // }
 // filter();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const fetchCountry = async () => {
-//     // 1) In your JavaScript file, create a function which houses a fetch() request to the RESTCountries API and returns the response in JSON format.
-//     const response = await fetch("https://restcountries.com/v3.1/all");
-//     const countryJsonData = await response.json();
-//     // 2) grab html element
-//     const ulElement = document.getElementById("countriesList");
-//     countryJsonData.forEach(country => {
-//         const liElement = document.createElement("li");
-//         ulElement.appendChild(liElement);
-//         liElement.innerText = country.name.common + "   (" + country.name.official + ")";
-//     })
-// }
-
-
-
-
 
 
 
