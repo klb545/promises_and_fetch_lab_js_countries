@@ -17,12 +17,14 @@ const fetchCountries = async () => {
 
 // 2 & 8)
 const setUp = async () => {
+    
+    countries = await fetchCountries();
+
     try {
-        countries = await fetchCountries();
         createList(countries);
     }
     catch(error){
-        pElement.appendChild(Object.assign(document.createElement('p'),{textContent: "Error: \n"  + "404. Country not found."})); 
+        pElement.appendChild(Object.assign(document.createElement('p'),{textContent: `Error: \n  404. No countries were found to match input.`})); 
     }
 }
 
