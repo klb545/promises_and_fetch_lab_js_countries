@@ -1,5 +1,5 @@
 // GLOBAL VARIABLES
-let pElement = document.getElementById("countriesList").querySelector("p");
+const pElement = document.getElementById("countriesList").querySelector("p");
 const ulElement = document.getElementById("countriesList");
 const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
@@ -22,7 +22,7 @@ const setUp = async () => {
         createList(countries);
     }
     catch(error){
-        inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: error})); 
+        pElement.appendChild(Object.assign(document.createElement('p'),{textContent: "Error: \n"  + "404. Country not found."})); 
     }
 }
 
@@ -45,7 +45,7 @@ buttonElement.addEventListener("click", event => {
 
 // 5 & 7)
 const filter = (parameter) => {
-    const temporaryMessage = document.createElement("h2");
+    const temporaryMessage = document.createElement("h3");
     temporaryMessage.innerText = "Filtering for \"" + parameter + "\"";
     inputElement.parentNode.appendChild(temporaryMessage);
 
