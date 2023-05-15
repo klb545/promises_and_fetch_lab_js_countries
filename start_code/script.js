@@ -15,7 +15,7 @@ const fetchCountries = async () => {
     return countryJsonData;
 }
 
-// 2)
+// 2 & 8)
 const setUp = async () => {
     try {
         countries = await fetchCountries();
