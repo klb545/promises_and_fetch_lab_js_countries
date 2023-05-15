@@ -1,7 +1,7 @@
 // GLOBAL VARIABLES
 const pElement = document.getElementById("countriesList").querySelector("p");
 const ulElement = document.getElementById("countriesList");
-const inputElement = document.getElementById("user-input");
+const inputElement = document.getElementById("country-input");
 const buttonElement = document.getElementById("submit");
 
 let countries = [];
@@ -42,11 +42,17 @@ buttonElement.addEventListener("click", event => {
     // console.log(inputElement.value);
     filter(inputElement.value);
 })
+inputElement.addEventListener("keypress", event => {
+    if(event.key === "Enter"){
+        event.preventDefault();
+        buttonElement.click();
+    }
+})
 
 // 5 & 7)
 const filter = (parameter) => {
     const temporaryMessage = document.createElement("h3");
-    temporaryMessage.innerText = "Filtering for \"" + parameter + "\"";
+    temporaryMessage.innerText = "Searching for \"" + parameter + "\"";
     inputElement.parentNode.appendChild(temporaryMessage);
 
     pElement.innerText = "Awaiting API...";
