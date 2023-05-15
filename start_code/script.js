@@ -3,7 +3,7 @@
 // // // // // // // // // // // //
 
 // GLOBAL VARIABLES
-const pElement = document.getElementById("countriesList").querySelector("p");
+let pElement = document.getElementById("countriesList").querySelector("p");
 const ulElement = document.getElementById("countriesList");
 const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
@@ -13,9 +13,9 @@ const buttonElement = document.getElementById("submit");
 const fetchCountry = async () => {
     const response = await fetch("https://restcountries.com/v3.1/all");
     const countryJsonData = await response.json();
-    // if(countryJsonData != null){
-    //     pElement.remove();
-    // }
+    if(countryJsonData != null){
+        pElement.innerHTML = "<!--" + pElement.innerText + "-->";
+    }
     return countryJsonData;
 }
 
@@ -43,7 +43,6 @@ const createListOfCountries = async () => {
     })
 }
 
-// Calling functions
 setUp();
 
 // 4) Add a simple <form> to your HTML with a single text-box input and a submit button. Create a
@@ -59,11 +58,12 @@ buttonElement.addEventListener("click", event => {
     const allLiElements = document.querySelectorAll("li");
     const stringInputFromUser = inputElement.value.toLowerCase();
 
-
     const temporaryMessage = document.createElement("h2");
     inputElement.parentNode.appendChild(temporaryMessage);
     temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
 
+    pElement.innerHTML = pElement.innerHTML.substring(4, 19);
+    console.log(pElement);
 
     const delayInMilliSeconds = 1000;
     setTimeout(function() {
@@ -75,8 +75,8 @@ buttonElement.addEventListener("click", event => {
         }
         temporaryMessage.remove();
 
+
     }, delayInMilliSeconds)
-    // dynamicHeading();
 })
 
 
@@ -90,24 +90,9 @@ buttonElement.addEventListener("click", event => {
 // 7) Add a dynamic heading which tells the user that the countries are being filtered.
 //    Add an artificial delay so that this header can be viewed as well as the original "Awaiting API.." <p> element
 
-// const dynamicHeading = async () => {
-//     if(){
-//         const temporaryMessage = document.createElement("h2");
-//         ulElement.appendChild(temporaryMessage);
-//         temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
-//     }
-// }
-
-// const headingElement = document.querySelector("h1");
-// const dynamicHeading = () => {
-//     headingElement.innerText = "Results after filtering for \"" + inputElement.value + "\"";
-// }
-
-
-
 
 // 8) Make your page display an error message should it meet an error on querying the API.
-//    Test this out by trying to access an endpoint which doesn't exist for the API
+//    Test this out by trying to access an endpoint which doesn't exist for the API.
 
 
 
