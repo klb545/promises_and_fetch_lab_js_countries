@@ -72,6 +72,7 @@ buttonElement.addEventListener("click", event => {
             }
             temporaryMessage.remove();
             pElement.innerHTML = "<!--" + pElement.innerText + "-->";
+            inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + " results returned"}));
         // }
         // catch(err) {
         //     pElement.innerText = err.message;
