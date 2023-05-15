@@ -33,10 +33,38 @@ const createList = (jsonCountries) => {
 setUp();
 
 // 4 & 5)
+// buttonElement.addEventListener("click", event => {
+//     console.log(inputElement.value);
+//     // temporary message
+//     const temporaryMessage = document.createElement("h2");
+//     temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
+//     inputElement.parentNode.appendChild(temporaryMessage);
+//     // temporary "Awaiting API..." paragraph
+//     pElement.innerText = "Awaiting API...";
+
+//     const allLiElements = document.querySelectorAll("li");
+
+//     setTimeout(function() {
+//         for(let i = 0; i < allLiElements.length; i++){
+//             allLiElements[i].remove();
+//         }
+//         url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
+//         setUp();
+//         temporaryMessage.remove();
+//         pElement.innerHTML = "<!--" + pElement.innerText + "-->";
+//         // inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
+//    }, 1000)
+// })
+
 buttonElement.addEventListener("click", event => {
+    // console.log(inputElement.value);
+    filter(inputElement.value);
+})
+
+const filter = (parameter) => {
     // temporary message
     const temporaryMessage = document.createElement("h2");
-    temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
+    temporaryMessage.innerText = "Filtering for \"" + parameter + "\"";
     inputElement.parentNode.appendChild(temporaryMessage);
     // temporary "Awaiting API..." paragraph
     pElement.innerText = "Awaiting API...";
@@ -47,13 +75,15 @@ buttonElement.addEventListener("click", event => {
         for(let i = 0; i < allLiElements.length; i++){
             allLiElements[i].remove();
         }
-        url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
+        url = "https://restcountries.com/v3.1/name/" + parameter /*+ "?fullText=true"*/;
         setUp();
         temporaryMessage.remove();
         pElement.innerHTML = "<!--" + pElement.innerText + "-->";
         // inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
    }, 1000)
-})
+}
+
+
 
 // buttonElement.addEventListener("click", event => {
     
