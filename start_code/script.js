@@ -38,7 +38,7 @@ buttonElement.addEventListener("click", event => {
     filter(inputElement.value);
 })
 
-// 5)
+// 5 & 7)
 const filter = (parameter) => {
     const temporaryMessage = document.createElement("h2");
     temporaryMessage.innerText = "Filtering for \"" + parameter + "\"";
