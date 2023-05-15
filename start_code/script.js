@@ -1,22 +1,17 @@
-// // // // // // // // // // // //
-// // // // //  MVP  // // // // //
-// // // // // // // // // // // //
-
 // GLOBAL VARIABLES
 let pElement = document.getElementById("countriesList").querySelector("p");
 const ulElement = document.getElementById("countriesList");
+const inputElement = document.getElementById("user-input");
+const buttonElement = document.getElementById("submit");
 
-// 1) Create a function which houses a fetch() request to the RESTCountries API and returns the
-//    response in JSON format.
+// 1)
 const fetchCountry = async () => {
     const response = await fetch("https://restcountries.com/v3.1/all");
     const countryJsonData = await response.json();
     return countryJsonData;
 }
 
-// 2) Create a SetUp() function which calls your first function and populates a global variable
-//    with the output. Have this function be called on load of your webpage.
-
+// 2)
 const setUp = () => createListOfCountries();
 // const setUp = async () => {
 //     const countries = await fetchCountry();
@@ -24,11 +19,7 @@ const setUp = () => createListOfCountries();
 // }
 // setUp();
 
-// 3) Create a function which uses this global variable to create a series of new HTML elements,
-//    populating each with information about each country (such as name and population), and
-//    adding them to the <ul> in your HTML. Call this function following your first function
-//    within the SetUp() function. Ensure that the original <p> element is removed ahead of
-//    populating your list.
+// 3) 
 const createListOfCountries = async () => {
     const countries = await fetchCountry();
     pElement.innerHTML = "<!--" + pElement.innerText + "-->";
@@ -42,16 +33,7 @@ const createListOfCountries = async () => {
 
 setUp();
 
-// 4) Add a simple <form> to your HTML with a single text-box input and a submit button. Create a
-//    function which is called when the form is submitted, printing the value of the <input>
-//    element to the console.
-// &
-// 5) Create a function which takes your global variable and filters it based off of the value
-//    received from your <form> above. Replace the contents of your <ul> with the filtered
-//    countries returned.
-const inputElement = document.getElementById("user-input");
-const buttonElement = document.getElementById("submit");
-
+// 4) & 5)
 buttonElement.addEventListener("click", event => {
     
     const allLiElements = document.querySelectorAll("li");
@@ -72,7 +54,7 @@ buttonElement.addEventListener("click", event => {
             }
             temporaryMessage.remove();
             pElement.innerHTML = "<!--" + pElement.innerText + "-->";
-            inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + " results returned"}));
+            inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")}));
         // }
         // catch(err) {
         //     pElement.innerText = err.message;
@@ -83,14 +65,9 @@ buttonElement.addEventListener("click", event => {
 
 
 
-// // // // // // // // // // // // // // //
-// // // // //   EXTENSIONS   // // // // //
-// // // // // // // // // // // // // // //
-
-// 6) Neaten up your JavaScript functionality, making abstract functions for any repeated functionality.
-
-// 7) Add a dynamic heading which tells the user that the countries are being filtered.
-//    Add an artificial delay so that this header can be viewed as well as the original "Awaiting API.." <p> element
+// // // // // // // // // // // // // // // //
+// // // // //  HAVEN'T DONE...  // // // // //
+// // // // // // // // // // // // // // // //
 
 // 8) Make your page display an error message should it meet an error on querying the API.
 //    Test this out by trying to access an endpoint which doesn't exist for the API.
