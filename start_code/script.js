@@ -32,12 +32,13 @@ const createList = (jsonCountries) => {
 }
 setUp();
 
-// 4) & 5)
+// 4 & 5)
 buttonElement.addEventListener("click", event => {
+    // temporary message
     const temporaryMessage = document.createElement("h2");
-    inputElement.parentNode.appendChild(temporaryMessage);
     temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
-
+    inputElement.parentNode.appendChild(temporaryMessage);
+    // temporary "Awaiting API..." paragraph
     pElement.innerText = "Awaiting API...";
 
     const allLiElements = document.querySelectorAll("li");
@@ -48,7 +49,6 @@ buttonElement.addEventListener("click", event => {
         }
         url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
         setUp();
-        const listNew = ulElement.getElementsByTagName("li");
         temporaryMessage.remove();
         pElement.innerHTML = "<!--" + pElement.innerText + "-->";
         // inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
