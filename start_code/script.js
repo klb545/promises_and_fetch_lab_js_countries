@@ -22,7 +22,7 @@ const setUp = async () => {
         createList(countries);
     }
     catch(error){
-        pElement.appendChild(Object.assign(document.createElement('p'),{textContent: `Error: \n  404. No countries were found to match input.`})); 
+        pElement.appendChild(Object.assign(document.createElement('p'),{textContent: "Error 404. No countries were found to match input."})); 
     }
 }
 
