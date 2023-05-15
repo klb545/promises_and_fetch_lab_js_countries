@@ -32,7 +32,7 @@ const createList = (jsonCountries) => {
     jsonCountries.forEach(country => {
         const liElement = document.createElement("li");
         ulElement.appendChild(liElement);
-        liElement.innerHTML = `<br>${country.flag}&emsp;<strong>Country:&emsp;</strong>${country.name.common} <br>&emsp;&emsp; <strong>Capital:&emsp;&ensp;</strong>${country.capital}`;
+        liElement.innerHTML = `<br>${country.flag}&emsp;<strong>Country:&emsp;</strong>${country.name.common}<br>&emsp;&emsp; <strong>Capital:&emsp;&ensp;</strong>${country.capital}`;
     })
 }
 setUp();
