@@ -35,7 +35,8 @@ const createListOfCountries = async () => {
     countries.forEach(country => {
         const liElement = document.createElement("li");
         ulElement.appendChild(liElement);
-        liElement.innerText = country.name.common + " " + country.flag + "\n   Population: " + country.population + "\n   Capital: " + country.capital;
+        // liElement.style.listStyleType = countr
+        liElement.innerHTML = "<br>" + country.flag + "&emsp;<strong>Country:&emsp;</strong>" + country.name.common + "<br>&emsp;&emsp; <strong>Capital:&emsp;&ensp;</strong>" + country.capital;
     })
 }
 
@@ -52,6 +53,7 @@ const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
 
 buttonElement.addEventListener("click", event => {
+    
     const allLiElements = document.querySelectorAll("li");
     const stringInputFromUser = inputElement.value.toLowerCase();
 
@@ -61,11 +63,10 @@ buttonElement.addEventListener("click", event => {
 
     pElement.innerHTML = pElement.innerHTML.substring(4, 19);
 
-    const delayInMilliSeconds = 1000;
     setTimeout(function() {
         // try {
             for(let i = 0; i < allLiElements.length; i++){
-                if(!allLiElements[i].innerText.toLowerCase().includes(stringInputFromUser)){
+                if(!allLiElements[i].innerText.toLowerCase().substring(9).replace("capital:", "").includes(stringInputFromUser)){
                     allLiElements[i].remove();
                 }
             }
@@ -75,7 +76,7 @@ buttonElement.addEventListener("click", event => {
         // catch(err) {
         //     pElement.innerText = err.message;
         // }    
-    }, delayInMilliSeconds)
+    }, 1000)
 })
 
 
