@@ -61,17 +61,22 @@ buttonElement.addEventListener("click", event => {
     temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
 
     pElement.innerHTML = pElement.innerHTML.substring(4, 19);
-    console.log(pElement);
 
     const delayInMilliSeconds = 1000;
     setTimeout(function() {
         // code to be executed after 1 second
-        for(let i = 0; i < allLiElements.length; i++){
-            if(!allLiElements[i].innerText.toLowerCase().includes(stringInputFromUser)){
-                allLiElements[i].remove();
+        // try {
+            for(let i = 0; i < allLiElements.length; i++){
+                if(!allLiElements[i].innerText.toLowerCase().includes(stringInputFromUser)){
+                    allLiElements[i].remove();
+                }
             }
-        }
-        temporaryMessage.remove();
+            temporaryMessage.remove();
+            pElement.innerHTML = "<!--" + pElement.innerText + "-->";
+        // }
+        // catch(err) {
+        //     pElement.innerText = err.message;
+        // }    
     }, delayInMilliSeconds)
 })
 
