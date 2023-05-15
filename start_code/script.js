@@ -5,7 +5,7 @@ const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
 
 let countries = [];
-let url = "https://restcountries.com/v3.1/all4";
+let url = "https://restcountries.com/v3.1/all";
 
 
 // 1)
@@ -89,12 +89,3 @@ const filter = (parameter) => {
 //             inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
 //     }, 1000)
 // })
-
-
-// // // // // // // // // // // // // // // //
-// // // // //  HAVEN'T DONE...  // // // // //
-// // // // // // // // // // // // // // // //
-
-// 8) Make your page display an error message should it meet an error on querying the API.
-//    Test this out by trying to access an endpoint which doesn't exist for the API.
-
