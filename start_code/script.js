@@ -57,7 +57,7 @@ setUp();
 
 buttonElement.addEventListener("click", (event)=>{
     const allLiElements = document.querySelectorAll("li");
-    const stringInputFromUser = inputElement.value;
+    const stringInputFromUser = inputElement.value.toLowerCase();
     for(let i = 0; i < allLiElements.length; i++){
         if(!allLiElements[i].innerText.toLowerCase().includes(stringInputFromUser)){
             allLiElements[i].remove();
