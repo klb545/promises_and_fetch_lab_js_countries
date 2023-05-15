@@ -18,21 +18,19 @@ const fetchCountries = async () => {
 // 2)
 const setUp = async () => {
     countries = await fetchCountries();
-    return countries;
+    createList(countries);
 }
 
 // 3) 
-const createListOfCountries = async () => {
-    const countries = await setUp();
+const createList = (jsonCountries) => {
     pElement.innerHTML = "<!--" + pElement.innerText + "-->";
-    countries.forEach(country => {
+    jsonCountries.forEach(country => {
         const liElement = document.createElement("li");
         ulElement.appendChild(liElement);
         liElement.innerHTML = "<br>" + country.flag + "&emsp;<strong>Country:&emsp;</strong>" + country.name.common + "<br>&emsp;&emsp; <strong>Capital:&emsp;&ensp;</strong>" + country.capital;
     })
 }
-
-createListOfCountries();
+setUp();
 
 // 4) & 5)
 buttonElement.addEventListener("click", event => {
@@ -49,7 +47,7 @@ buttonElement.addEventListener("click", event => {
             allLiElements[i].remove();
         }
         url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
-        createListOfCountries();
+        setUp();
         const listNew = ulElement.getElementsByTagName("li");
         temporaryMessage.remove();
         pElement.innerHTML = "<!--" + pElement.innerText + "-->";
