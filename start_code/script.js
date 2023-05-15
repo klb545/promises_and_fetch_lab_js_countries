@@ -58,7 +58,12 @@ setUp();
 buttonElement.addEventListener("click", event => {
     const allLiElements = document.querySelectorAll("li");
     const stringInputFromUser = inputElement.value.toLowerCase();
-    
+
+
+    const temporaryMessage = document.createElement("h2");
+    inputElement.parentNode.appendChild(temporaryMessage);
+    temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
+
 
     const delayInMilliSeconds = 1000;
     setTimeout(function() {
@@ -68,6 +73,8 @@ buttonElement.addEventListener("click", event => {
                 allLiElements[i].remove();
             }
         }
+        temporaryMessage.remove();
+
     }, delayInMilliSeconds)
     // dynamicHeading();
 })
