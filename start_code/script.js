@@ -39,7 +39,6 @@ const createListOfCountries = async () => {
         ulElement.appendChild(liElement);
         liElement.innerText = country.name.common + ".   Population: " + country.population + ".   Capital: " + country.capital;
     })
-    
 }
 
 setUp();
@@ -73,8 +72,6 @@ buttonElement.addEventListener("click", event => {
             }
         }
         temporaryMessage.remove();
-
-
     }, delayInMilliSeconds)
 })
 
@@ -90,23 +87,4 @@ buttonElement.addEventListener("click", event => {
 
 // 8) Make your page display an error message should it meet an error on querying the API.
 //    Test this out by trying to access an endpoint which doesn't exist for the API.
-
-
-
-// const filter = async () => {
-//     const stringInputFromUser = await inputElement.value;
-//     for(let i = 0; i < ulElement.length(); i++){
-//         if(!ulElement[i].includes(stringInputFromUser)){
-//             ulElement[i].remove();
-//         }
-//     }
-//     for(let i = 0; i < ulElement.length(); i++){
-//         if(!ulElement[i].includes(stringInputFromUser)){
-//             ulElement[i].remove();
-//         }
-//     }
-// }
-// filter();
-
-
 
