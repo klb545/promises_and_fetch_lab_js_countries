@@ -55,16 +55,22 @@ setUp();
 //    countries returned.
 
 
-buttonElement.addEventListener("click", (event)=>{
+buttonElement.addEventListener("click", event => {
     const allLiElements = document.querySelectorAll("li");
     const stringInputFromUser = inputElement.value.toLowerCase();
-    for(let i = 0; i < allLiElements.length; i++){
-        if(!allLiElements[i].innerText.toLowerCase().includes(stringInputFromUser)){
-            allLiElements[i].remove();
+    
+
+    const delayInMilliSeconds = 1000;
+    setTimeout(function() {
+        // code to be executed after 1 second
+        for(let i = 0; i < allLiElements.length; i++){
+            if(!allLiElements[i].innerText.toLowerCase().includes(stringInputFromUser)){
+                allLiElements[i].remove();
+            }
         }
-    }
+    }, delayInMilliSeconds)
     // dynamicHeading();
-});
+})
 
 
 
@@ -76,17 +82,21 @@ buttonElement.addEventListener("click", (event)=>{
 
 // 7) Add a dynamic heading which tells the user that the countries are being filtered.
 //    Add an artificial delay so that this header can be viewed as well as the original "Awaiting API.." <p> element
-const headingElement = document.querySelector("h1");
+
+// const dynamicHeading = async () => {
+//     if(){
+//         const temporaryMessage = document.createElement("h2");
+//         ulElement.appendChild(temporaryMessage);
+//         temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
+//     }
+// }
+
+// const headingElement = document.querySelector("h1");
 // const dynamicHeading = () => {
 //     headingElement.innerText = "Results after filtering for \"" + inputElement.value + "\"";
 // }
 
-// const dynamicHeading = async () => {
-//     // if(){
-//     //     //
-//     // }
-//     headingElement.innerText = "Filtering for \"" + inputElement.value + "\"";
-// }
+
 
 
 // 8) Make your page display an error message should it meet an error on querying the API.
