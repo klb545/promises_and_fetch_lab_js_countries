@@ -4,10 +4,12 @@ const ulElement = document.getElementById("countriesList");
 const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
 
+let url = "https://restcountries.com/v3.1/all";
+
 
 // 1)
 const fetchCountries = async () => {
-    const response = await fetch("https://restcountries.com/v3.1/all");
+    const response = await fetch(url);
     const countryJsonData = await response.json();
     return countryJsonData;
 }
@@ -35,31 +37,51 @@ const createListOfCountries = async () => {
 setUp();
 
 // 4) & 5)
-buttonElement.addEventListener("click", event => {
+// buttonElement.addEventListener("click", event => {
     
-    const allLiElements = document.querySelectorAll("li");
-    const stringInputFromUser = inputElement.value.toLowerCase();
+//     const allLiElements = document.querySelectorAll("li");
+//     const stringInputFromUser = inputElement.value.toLowerCase();
 
+//     const temporaryMessage = document.createElement("h2");
+//     inputElement.parentNode.appendChild(temporaryMessage);
+//     temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
+
+//     pElement.innerHTML = pElement.innerHTML.substring(4, 19);
+
+//     setTimeout(function() {
+//             for(let i = 0; i < allLiElements.length; i++){
+//                 if(!allLiElements[i].innerText.toLowerCase().substring(15).replace("capital:", "").includes(stringInputFromUser)){
+//                     allLiElements[i].remove();
+//                 }
+//             }
+//             temporaryMessage.remove();
+//             pElement.innerHTML = "<!--" + pElement.innerText + "-->";
+//             inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
+//     }, 1000)
+// })
+
+buttonElement.addEventListener("click", event => {
     const temporaryMessage = document.createElement("h2");
     inputElement.parentNode.appendChild(temporaryMessage);
     temporaryMessage.innerText = "Filtering for \"" + inputElement.value + "\"";
 
     pElement.innerHTML = pElement.innerHTML.substring(4, 19);
 
+    const allLiElements = document.querySelectorAll("li");
     setTimeout(function() {
-            for(let i = 0; i < allLiElements.length; i++){
-                if(!allLiElements[i].innerText.toLowerCase().substring(15).replace("capital:", "").includes(stringInputFromUser)){
-                    allLiElements[i].remove();
-                }
-            }
-            temporaryMessage.remove();
-            pElement.innerHTML = "<!--" + pElement.innerText + "-->";
-            inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
+        for(let i = 0; i < allLiElements.length; i++){
+            allLiElements[i].remove();
+        }
+        url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
+        console.log(url);
+        setUp();
+        temporaryMessage.remove();
+        pElement.innerHTML = "<!--" + pElement.innerText + "-->";
+        // inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")}));
     }, 1000)
 })
 
-// fetch("https://restcountries.com/v3.1/name/" + stringInputFromUser + "?fullText=true");
-// createListOfCountries();
+
 
 
 // // // // // // // // // // // // // // // //
