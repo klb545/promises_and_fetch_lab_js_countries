@@ -32,12 +32,13 @@ const createList = (jsonCountries) => {
 }
 setUp();
 
-// 4 & 5)
+// 4)
 buttonElement.addEventListener("click", event => {
     // console.log(inputElement.value);
     filter(inputElement.value);
 })
 
+// 5)
 const filter = (parameter) => {
     const temporaryMessage = document.createElement("h2");
     temporaryMessage.innerText = "Filtering for \"" + parameter + "\"";
