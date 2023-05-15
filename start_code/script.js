@@ -4,6 +4,7 @@ const ulElement = document.getElementById("countriesList");
 const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
 
+let countries = [];
 let url = "https://restcountries.com/v3.1/all";
 
 
@@ -15,26 +16,23 @@ const fetchCountries = async () => {
 }
 
 // 2)
-const setUp = () => createListOfCountries();
-// const setUp = async () => {
-//     const countries = await fetchCountries();
-//     pElement.innerText = JSON.stringify(countries);
-// }
-// setUp();
+const setUp = async () => {
+    countries = await fetchCountries();
+    return countries;
+}
 
 // 3) 
 const createListOfCountries = async () => {
-    const countries = await fetchCountries();
+    const countries = await setUp();
     pElement.innerHTML = "<!--" + pElement.innerText + "-->";
     countries.forEach(country => {
         const liElement = document.createElement("li");
         ulElement.appendChild(liElement);
-        // liElement.style.listStyleType = countr
         liElement.innerHTML = "<br>" + country.flag + "&emsp;<strong>Country:&emsp;</strong>" + country.name.common + "<br>&emsp;&emsp; <strong>Capital:&emsp;&ensp;</strong>" + country.capital;
     })
 }
 
-setUp();
+createListOfCountries();
 
 // 4) & 5)
 buttonElement.addEventListener("click", event => {
@@ -51,7 +49,7 @@ buttonElement.addEventListener("click", event => {
             allLiElements[i].remove();
         }
         url = "https://restcountries.com/v3.1/name/" + inputElement.value /*+ "?fullText=true"*/;
-        setUp();
+        createListOfCountries();
         const listNew = ulElement.getElementsByTagName("li");
         temporaryMessage.remove();
         pElement.innerHTML = "<!--" + pElement.innerText + "-->";
