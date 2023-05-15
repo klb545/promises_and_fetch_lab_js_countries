@@ -4,8 +4,9 @@ const ulElement = document.getElementById("countriesList");
 const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
 
+
 // 1)
-const fetchCountry = async () => {
+const fetchCountries = async () => {
     const response = await fetch("https://restcountries.com/v3.1/all");
     const countryJsonData = await response.json();
     return countryJsonData;
@@ -14,14 +15,14 @@ const fetchCountry = async () => {
 // 2)
 const setUp = () => createListOfCountries();
 // const setUp = async () => {
-//     const countries = await fetchCountry();
+//     const countries = await fetchCountries();
 //     pElement.innerText = JSON.stringify(countries);
 // }
 // setUp();
 
 // 3) 
 const createListOfCountries = async () => {
-    const countries = await fetchCountry();
+    const countries = await fetchCountries();
     pElement.innerHTML = "<!--" + pElement.innerText + "-->";
     countries.forEach(country => {
         const liElement = document.createElement("li");
@@ -46,7 +47,6 @@ buttonElement.addEventListener("click", event => {
     pElement.innerHTML = pElement.innerHTML.substring(4, 19);
 
     setTimeout(function() {
-        // try {
             for(let i = 0; i < allLiElements.length; i++){
                 if(!allLiElements[i].innerText.toLowerCase().substring(15).replace("capital:", "").includes(stringInputFromUser)){
                     allLiElements[i].remove();
@@ -54,15 +54,12 @@ buttonElement.addEventListener("click", event => {
             }
             temporaryMessage.remove();
             pElement.innerHTML = "<!--" + pElement.innerText + "-->";
-            inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")}));
-        // }
-        // catch(err) {
-        //     pElement.innerText = err.message;
-        // }    
+            inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: document.querySelectorAll("li").length + (document.querySelectorAll("li").length == 1 ? " result returned" : " results returned")})); 
     }, 1000)
 })
 
-
+// fetch("https://restcountries.com/v3.1/name/" + stringInputFromUser + "?fullText=true");
+// createListOfCountries();
 
 
 // // // // // // // // // // // // // // // //
