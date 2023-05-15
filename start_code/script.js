@@ -5,7 +5,7 @@ const inputElement = document.getElementById("user-input");
 const buttonElement = document.getElementById("submit");
 
 let countries = [];
-let url = "https://restcountries.com/v3.1/all";
+let url = "https://restcountries.com/v3.1/all4";
 
 
 // 1)
@@ -17,8 +17,13 @@ const fetchCountries = async () => {
 
 // 2)
 const setUp = async () => {
-    countries = await fetchCountries();
-    createList(countries);
+    try {
+        countries = await fetchCountries();
+        createList(countries);
+    }
+    catch(error){
+        inputElement.parentNode.appendChild(Object.assign(document.createElement('p'),{textContent: error})); 
+    }
 }
 
 // 3) 
