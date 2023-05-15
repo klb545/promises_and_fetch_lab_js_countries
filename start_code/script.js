@@ -66,7 +66,7 @@ buttonElement.addEventListener("click", event => {
     setTimeout(function() {
         // try {
             for(let i = 0; i < allLiElements.length; i++){
-                if(!allLiElements[i].innerText.toLowerCase().substring(9).replace("capital:", "").includes(stringInputFromUser)){
+                if(!allLiElements[i].innerText.toLowerCase().substring(15).replace("capital:", "").includes(stringInputFromUser)){
                     allLiElements[i].remove();
                 }
             }
